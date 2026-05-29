@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-content *ngIf="getTodosArr.length > 0; else noTodo">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between" 
+            *ngFor="let todo of getTodosArr; trackBy : trackByTodoID"
+            >
+            <strong>{{todo.todoItem}}</strong>
+            <div>
+                <button
+                (click)="onEditTodo(todo)"
+                 mat-raised-button color="primary" class="mr-2">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+                <button 
+                (click)="onRemoveTodo(todo.todoID)"
+                mat-raised-button color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </li>
+        </ul>
+    </mat-card-content>
+    <ng-template #noTodo>
+        <p class="alert alert-info">No Todo!!!</p>
+    </ng-template>
+</mat-card>

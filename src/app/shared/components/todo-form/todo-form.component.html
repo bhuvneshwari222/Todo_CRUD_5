@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card-title>{{isInEditMode ? 'Update todo' : 'Add Todo'}}</mat-card-title>
+    <mat-card-content>
+        <form #todoForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="todoItem">TodoItem</label>
+                <input 
+                required
+                name="todoItem"
+                ngModel
+                #todoItem="ngModel"
+                type="text" class="form-control">
+
+                <strong
+                *ngIf="(todoItem.touched || todoForm.submitted) && todoItem.invalid"
+                 class="text-danger">TodoItem is a required field</strong>
+            </div>
+
+            <div class="form-group">
+                <label for="isCompleted">IsCompleted</label>
+                <input 
+                required
+                name="isCompleted"
+                ngModel
+                #isCompleted="ngModel"
+                 type="text" class="form-control">
+
+                 <strong
+                 *ngIf="(isCompleted.touched || todoForm.submitted) && isCompleted.invalid"
+                  class="text-danger">isCompleted field is required</strong>
+            </div>
+
+            <button *ngIf="!isInEditMode" type="submit" mat-raised-button color="primary" class="w-100">Add Todo</button>
+            <button
+            (click)="onUpdate()"
+             *ngIf="isInEditMode" type="button" mat-raised-button color="primary" class="w-100">Update Todo</button>
+        </form>
+    </mat-card-content>
+</mat-card>

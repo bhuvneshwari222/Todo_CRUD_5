@@ -1,0 +1,12 @@
+.ng-invalid.ng-touched, .ng-invalid.ng-dirty{
+    border-color: red;
+}
+
+form.ng-invalid.ng-submitted{
+    select{
+        border-color: red;
+    }
+    input{
+        border-color: red;
+    }
+}
